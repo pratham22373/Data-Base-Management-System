@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Signup</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Gift Store</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Vendor Signup</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form method="POST" action="/info/signup/vendor">
+            <div class="mb-3">
+                <label for="first_name" class="form-label">First Name<span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="first_name" name="first_name" required placeholder="Enter your first name">
+            </div>
+            <div class="mb-3">
+                <label for="middle_name" class="form-label">Middle Name</label>
+                <input type="text" class="form-control" id="middle_name" name="middle_name" placeholder="Enter your middle name">
+            </div>
+            <div class="mb-3">
+                <label for="last_name" class="form-label">Last Name<span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="last_name" name="last_name" required placeholder="Enter your last name">
+            </div>
+            <div class="mb-3">
+                <label for="phone_no" class="form-label">Phone Number<span class="text-danger">*</span></label>
+                <input type="tel" class="form-control" id="phone_no" name="phone_no" required placeholder="Enter your phone number">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email<span class="text-danger">*</span></label>
+                <input type="email" class="form-control" id="email" name="email" required placeholder="Enter your email">
+            </div>
+            <div class="mb-3">
+                <label for="street_id" class="form-label">Street ID<span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="street_id" name="street_id" required placeholder="Enter your street ID">
+            </div>
+            <div class="mb-3">
+                <label for="city" class="form-label">City<span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="city" name="city" required placeholder="Enter your city">
+            </div>
+            <div class="mb-3">
+                <label for="landmark" class="form-label">Landmark<span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="landmark" name="landmark" required placeholder="Enter a landmark">
+            </div>
+            <div class="mb-3">
+                <label for="states" class="form-label">State<span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="states" name="states" required placeholder="Enter your state">
+            </div>
+            <div class="mb-3">
+                <label for="pincode" class="form-label">Pincode<span class="text-danger">*</span></label>
+                <input type="number" class="form-control" id="pincode" name="pincode" required placeholder="Enter your pincode">
+            </div>
+            <div class="mb-3">
+                <label for="dob" class="form-label">Date of Birth<span class="text-danger">*</span></label>
+                <input type="date" class="form-control" id="dob" name="dob" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password<span class="text-danger">*</span></label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
+    </div>
+</body>
+</html>

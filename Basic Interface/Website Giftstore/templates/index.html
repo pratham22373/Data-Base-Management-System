@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Gift Store</title>
+
+    <style>
+        /* CSS styling for the image carousel */
+        .carousel-item img {
+            width: 100%;
+            height: 360px;
+            object-fit: cover;
+        }
+        .img-thumbnail {
+            max-width: 100%;
+            height: auto;
+            border: none; /* Remove border */
+        }
+        .image-container {
+            margin-top: 2rem; /* Adjust the margin as needed */
+        }
+        .image-text {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Gift Store</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <!-- Conditional login links based on user type -->
+                    {% if user_type == 'customer' %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/info/login/customer?user_type=customer">Customer Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/info/signup/customer?user_type=customer">Customer Sign Up</a>
+                        </li>
+                    {% elif user_type == 'admin' %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/info/login/admin?user_type=admin">Admin Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/info/signup/admin?user_type=admin">Admin Sign Up</a>
+                        </li>
+                    {% elif user_type == 'vendor' %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/info/login/vendor?user_type=vendor">Vendor Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/info/signup/vendor?user_type=vendor">Vendor Sign Up</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-3">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="http://127.0.0.1:5000/static/anniversary.jpg" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img src="http://127.0.0.1:5000/static/birthday.jpg" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                    <img src="http://127.0.0.1:5000/static/flowers.jpg" alt="Third slide">
+                </div>
+                <!-- Add more carousel items with additional images -->
+                <div class="carousel-item">
+                    <img src="http://127.0.0.1:5000/static/cakes.jpg" alt="Fourth slide">
+                </div>
+                <div class="carousel-item">
+                    <img src="http://127.0.0.1:5000/static/corporate_gifts.jpg" alt="Fifth slide">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row row-cols-2 row-cols-md-6 g-2 overflow-auto" style="white-space: nowrap;">
+            <div class="col">
+                <img src="http://127.0.0.1:5000/static/birthday_igp.jpg" class="img-thumbnail mb-3" alt="Birthday IGP"
+                    onclick="showPopup('Birthday Gift')">
+                <div class="image-text">Birthday Gift</div>
+            </div>
+            <div class="col">
+                <img src="http://127.0.0.1:5000/static/easter_gifts.jpg" class="img-thumbnail mb-3" alt="Easter Gifts"
+                    onclick="showPopup('Easter Gifts')">
+                <div class="image-text">Easter Gifts</div>
+            </div>
+            <div class="col">
+                <img src="http://127.0.0.1:5000/static/anniversary_igp.jpg" class="img-thumbnail mb-3"
+                    alt="anniversary_igp" onclick="showPopup('Anniversary Gifts')">
+                <div class="image-text">Anniversary Gifts</div>
+            </div>
+            <div class="col">
+                <img src="http://127.0.0.1:5000/static/gourmet.jpg" class="img-thumbnail mb-3" alt="gourmet"
+                    onclick="showPopup('Gourmet Gifts')">
+                <div class="image-text">Gourmet Gifts</div>
+            </div>
+            <div class="col">
+                <img src="http://127.0.0.1:5000/static/festival.jpg" class="img-thumbnail mb-3" alt="festival"
+                    onclick="showPopup('Bulk & Corporate Gifts')">
+                <div class="image-text">Bulk & Corporate Gifts</div>
+            </div>
+            <div class="col">
+                <img src="http://127.0.0.1:5000/static/wedding.jpg" class="img-thumbnail mb-3" alt="wedding"
+                    onclick="showPopup('Wedding Gifts')">
+                <div class="image-text">Wedding Gifts</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="loginModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login Required</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>You need to first login or sign up.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+
+    <script>
+        function showPopup(message) {
+            // Show the modal popup
+            var myModal = new bootstrap.Modal(document.getElementById('loginModal'));
+            myModal.show();
+        }
+    </script>
+</body>
+
+</html>

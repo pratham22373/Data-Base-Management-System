@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gift Store</title>
+    <style>
+        /* CSS styling for the image */
+        img {
+            width: 100%;
+            height: 360px;
+            object-fit: cover;
+        }
+        /* CSS styling for the "Enter As" text */
+        h2 {
+            text-align: center; /* Center the text horizontally */
+            font-weight: bold; /* Make the text bold */
+        }
+        /* CSS styling for the buttons */
+        .button-container {
+            text-align: center; /* Center the buttons horizontally */
+        }
+        button {
+            display: block; /* Make the buttons block-level elements */
+            width: 240px; /* Set the width of the buttons */
+            height: 60px; /* Set the height of the buttons */
+            margin: 20px auto; /* Center the buttons horizontally and add margin */
+            font-size: 20px; /* Set the font size of the buttons */
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; font-family: Roboto; font-weight: normal;">Welcome To Online Gift Store</h1>
+    <!-- Apply CSS styling to the image -->
+    <img src="http://127.0.0.1:5000/static/giftimage.jpg" height="400" width="1200">
+    <!-- Apply CSS styling to the "Enter As" text -->
+    <h2>Enter As</h2>
+    <!-- Apply CSS styling to the buttons -->
+    <div class="button-container">
+        <button onclick="window.location.href='/info?user_type=customer'">Customer</button>
+        <button onclick="window.location.href='/info?user_type=vendor'">Vendor</button>
+        <button onclick="window.location.href='/info?user_type=admin'">Admin</button>
+    </div>
+</body>
+</html>
